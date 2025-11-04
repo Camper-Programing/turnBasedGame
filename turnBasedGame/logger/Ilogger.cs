@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace turnBasedGame.logger
+﻿public interface Ilogger
 {
-    internal class Ilogger
-    {
-    }
+    void Log(string message);
 }

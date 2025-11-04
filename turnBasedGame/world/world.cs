@@ -9,11 +9,12 @@ namespace turnBasedGame.world
 {
     public class world
     {
+        private readonly Ilogger logger;
         public int maxX { get; set; }
         public int maxY { get; set; }
 
-        private readonly List<worldObject> worldObjects;
-        private readonly List<creature> creature;
+        private readonly List<worldObject> worldObjects = new ();
+        private readonly List<creature> creature = new ();
 
 
     }
