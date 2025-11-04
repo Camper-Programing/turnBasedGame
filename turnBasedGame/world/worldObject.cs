@@ -8,15 +8,15 @@ namespace turnBasedGame.world
 {
     public class worldObject
     {
-        public int positionX {  get; set; }
-        public int positionY { get; set; }
-        public bool isRemovalbe {  get; set; }
+        public int positionX {  get; private set; }
+        public int positionY { get; private set; }
+        public bool IsRemovalbe {  get; private set; }
 
         public worldObject(int x, int y, bool isRemovalbe = true)
         {
             positionX = x;
             positionX = y;
-            isRemovalbe = isRemovalbe;
+            IsRemovalbe = isRemovalbe;
         }
     }
 }

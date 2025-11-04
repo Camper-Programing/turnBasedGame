@@ -16,7 +16,7 @@ namespace turnBasedGame //test class ´for the framework
             MyLogger.Instance.addListener(new ConsoleTraceListener());
 
             //create world
-            var world = new World(10,10,MyLogger.Instance);
+            var world = new world(10,10,MyLogger.Instance);
 
             var creature = new creature(2, 3);
             world.Add(creature);

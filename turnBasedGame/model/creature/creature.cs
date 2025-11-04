@@ -1,13 +1,13 @@
 ﻿public class creature
 {
-    public int positionx { get; set; }
-    public int positiony { get; set; }
-    public int HP { get; set; }
+    public int positionX { get; private set; }
+    public int positionY { get; private set; }
+    public int HP { get; private set; }
 
-    public creature(int positionx, int positiony, int hP)
+    public creature(int positionX, int positionY, int hP)
     {
-        this.positionx = positionx;
-        this.positiony = positiony;
+        positionX = positionX;
+        positionY = positionY;
         HP = hP;
     }
     public void ReveiveHit(int damage)
