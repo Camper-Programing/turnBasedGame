@@ -1,4 +1,4 @@
-﻿using turnBasedGame.model.creature;
+﻿using turnBasedGame.model.Creature;
 using turnBasedGame.world;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,8 @@ namespace turnBasedGame.world
         public int maxX { get; set; }
         public int maxY { get; set; }
 
-        private readonly List<worldObject> worldObjects = new ();
-        private readonly List<creature> creature = new ();
+        private readonly List<WorldObject> WorldObjects = new ();
+        private readonly List<Creature> Creature = new ();
 
         public world(int maxX, int maxY, Ilogger logger)
         {
@@ -24,20 +24,20 @@ namespace turnBasedGame.world
             logger.Log($"World created with size {maxX}x{maxY}");
 
         }
-        public void AddWorldObject(worldObject obj)
+        public void AddWorldObject(WorldObject obj)
         {
-            worldObjects.Add(obj);
+            WorldObjects.Add(obj);
             logger.Log($"World object added at position ({obj.positionX}, {obj.positionY})");
         }
-        public void AddCreature(creature creature)
+        public void AddCreature(Creature Creature)
         {
-            this.creature.Add(creature);
-            logger.Log($"Creature added at position ({creature.positionX}, {creature.positionY})");
+            this.Creature.Add(Creature);
+            logger.Log($"Creature added at position ({Creature.positionX}, {Creature.positionY})");
         }
 
         public bool IsOccupied(int x, int y)
         {
-            return creature.Any(c => c.positionX == x && c.positionY == y) ||
+            return Creature.Any(c => c.positionX == x && c.positionY == y) ||
                    worldObjects.Any(o => o.positionX == x && o.positionY == y);
         }
 

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using turnBasedGame.logger;
+using turnBasedGame.model
 
-namespace turnBasedGame //test class ´for the framework
+namespace turnBasedGame.model //test class ´for the framework
 {
-    class consoleApp
+    class ConsoleApp
     {
         static void Main(string[] args)
         {
@@ -16,10 +17,35 @@ namespace turnBasedGame //test class ´for the framework
             MyLogger.Instance.addListener(new ConsoleTraceListener());
 
             //create world
-            var world = new world(10,10,MyLogger.Instance);
+            var world = new world(10, 10, MyLogger.Instance);
 
-            var creature = new creature(2, 3);
-            world.Add(creature);
+            //create Creature
+            var Creature = new Creature(2, 3);
+            world.Add(Creature);
+
+
+            //Move Creature
+            Creature.MoveTo(4, 5, world);
+            MyLogger.Instance.Log($"Creature moved to ({Creature.positionX}, {Creature.positionY})");
+
+            Console.WriteLine("Press any key to exit...check the log for details.");
+        }
+
+    }
+    public class Creature
+    {
+        public int positionX { get; private set; }
+        public int positionY { get; private set; }
+        public Creature(int x, int y)
+        {
+            positionX = x;
+            positionY = y;
+        }
+        public void MoveTo(int x, int y)
+        {
+            positionX = x;
+            positionY = y;
+
 
         }
     }
