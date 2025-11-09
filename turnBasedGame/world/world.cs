@@ -1,13 +1,8 @@
 ﻿using turnBasedGame.model.Creature;
-using turnBasedGame.world;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace turnBasedGame.world
+namespace turnBasedGame.World
 {
-    public class world
+    internal class World
     {
         private readonly Ilogger logger;
         public int maxX { get; set; }
@@ -16,7 +11,7 @@ namespace turnBasedGame.world
         private readonly List<WorldObject> WorldObjects = new ();
         private readonly List<Creature> Creature = new ();
 
-        public world(int maxX, int maxY, Ilogger logger)
+        public World(int maxX, int maxY, Ilogger logger)
         {
             this.maxX = maxX;
             this.maxY = maxY;
@@ -38,7 +33,7 @@ namespace turnBasedGame.world
         public bool IsOccupied(int x, int y)
         {
             return Creature.Any(c => c.positionX == x && c.positionY == y) ||
-                   worldObjects.Any(o => o.positionX == x && o.positionY == y);
+                   WorldObjects.Any(o => o.positionX == x && o.positionY == y);
         }
 
 

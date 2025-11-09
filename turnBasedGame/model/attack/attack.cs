@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace turnBasedGame.model.attack
 {
-    internal class attack
+    internal class Attack
     {
     }
 }

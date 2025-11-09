@@ -1,4 +1,4 @@
-﻿namespace turnBasedGame.model.creature
+﻿namespace turnBasedGame.model.Creature
 {
     public interface ICreature
     {
@@ -11,17 +11,27 @@
     }
     public class Creature : ICreature
     {
+        private int v1;
+        private int v2;
+
         public int positionX { get; private set; }
         public int positionY { get; private set; }
         public int HP { get; private set; }
 
-        public Creature(int positionX, int positionY, int hP)
+        public Creature(int PositionX, int PositionY, int hP)
         {
-            positionX = positionX;
-            positionY = positionY;
+            positionX = PositionX;
+            positionY = PositionY;
             HP = hP;
         }
-        public void moveTo(int x, int y)
+
+        public Creature(int v1, int v2)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+        }
+
+        public void MoveTo(int x, int y)
         {
             positionX = x;
             positionY = y;
@@ -40,6 +50,11 @@
         public void hit(Creature target, int damage)
         {
             target.ReveiveHit(damage);
+        }
+
+        public void moveTo(int x, int y)
+        {
+            throw new NotImplementedException();
         }
     }
 }
