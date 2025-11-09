@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace turnBasedGame.model.defence
+namespace turnBasedGame.model.Defence
 {
-    internal class Defence
+       public interface IDefenseItem
     {
+        public string Name { get; set; }
+        int Protection { get; }
     }
+
+  
+
 }

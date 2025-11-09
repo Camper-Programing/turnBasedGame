@@ -33,22 +33,6 @@ namespace turnBasedGame //test class ´for the framework
             Console.ReadKey();
         }
 
-    }
-    /*public class Creature
-    {
-        public int positionX { get; private set; }
-        public int positionY { get; private set; }
-        public Creature(int x, int y)
-        {
-            positionX = x;
-            positionY = y;
-        }
-        public void MoveTo(int x, int y)
-        {
-            positionX = x;
-            positionY = y;
-
-
-        }
-    }*/
+    } /* The first test has been concluded, had to change a few things here and there in order for it to work, one was mainly naming problems with the program*/
+   
 }
