@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using turnBasedGame.model.Defence;
+using turnBasedGame.model.Defense; 
 
-namespace turnBasedGame.model.defence
+
+
+namespace turnBasedGame.model.Defense
 {
-    public class Sheild : IDefenseItem
+    public class Shield : IDefenseItem
     {
-        public string Name => "Sheild";
+        public string Name => "Shield";
         public int Protection => 10;
     
         string IDefenseItem.Name { get => Name; set => throw new NotImplementedException(); }

@@ -27,12 +27,12 @@ namespace turnBasedGame.World
         public void AddCreature(Creature Creature)
         {
             this.Creature.Add(Creature);
-            logger.Log($"Creature added at position ({Creature.positionX}, {Creature.positionY})");
+            logger.Log($"Creature added at position ({Creature.PositionX}, {Creature.PositionY})");
         }
 
         public bool IsOccupied(int x, int y)
         {
-            return Creature.Any(c => c.positionX == x && c.positionY == y) ||
+            return Creature.Any(c => c.PositionX == x && c.PositionY == y) ||
                    WorldObjects.Any(o => o.positionX == x && o.positionY == y);
         }
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using turnBasedGame.model.Attack;
 
-namespace turnBasedGame.model.attack
+namespace turnBasedGame.model.Attack
 {
     public class Sword : IAttackItem
     {

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using turnBasedGame.logger;
 using turnBasedGame.model.Creature;
 using turnBasedGame.World;
+using turnBasedGame.model.Attack;
+using turnBasedGame.model.Defense;
+
 
 
 namespace turnBasedGame //test class ´for the framework
@@ -22,25 +25,37 @@ namespace turnBasedGame //test class ´for the framework
             var World = new World.World(10, 10, MyLogger.Instance);
 
             //create Creature
-            var Creature = new Creature(2, 3, 100);
+            /*var Creature = new Creature(2, 3, 100);*/
             //World.AddCreature(Creature);//
 
             var hero = new Hero(1, 1, 150);
             var enemy = new Enemy(5, 5, 80);
 
-            hero.AddAttackItem(new Sword(25));
-            enemy.AddDefenseItem(new Sheild(10));
+            //Add Items to Creature
+            hero.AddAttackItem(new Sword());
+            enemy.AddDefenseItem(new Shield());
 
+            //Add Creature to World
+            World.AddCreature(hero);
+            World.AddCreature(enemy);
+
+            //Test Attack Hero to Enemy
+            hero.Hit(enemy);
+            MyLogger.Instance.Log($"Enemy HP after hit: {enemy.HP}");
+
+            enemy.Hit(hero);
+            MyLogger.Instance.Log($"Hero HP after hit: {hero.HP}");
 
 
             //Move Creature
-            Creature.MoveTo(4, 5);
-            MyLogger.Instance.Log($"Creature moved to ({Creature.PositionX}, {Creature.PositionY})");
+
+            hero.MoveTo(4, 5);
+            MyLogger.Instance.Log($"Creature moved to ({hero.PositionX}, {hero.PositionY})"); /* The first test has been concluded, had to change a few things here and there in order for it to work, one was mainly naming problems with the program*/
 
             Console.WriteLine("Press any key to exit...check the log for details.");
             Console.ReadKey();
         }
 
-    } /* The first test has been concluded, had to change a few things here and there in order for it to work, one was mainly naming problems with the program*/
+    } 
    
 }

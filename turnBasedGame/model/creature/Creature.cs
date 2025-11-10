@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using turnBasedGame.model.Attack;
-using turnBasedGame.model.Defence;
+using turnBasedGame.model.Defense;
 
 
 namespace turnBasedGame.model.Creature
@@ -24,10 +24,10 @@ namespace turnBasedGame.model.Creature
         
         
 
-        public Creature(int PositionX, int PositionY, int hP)
+        public Creature(int positionX, int positionY, int hP)
         {
-            PositionX = PositionX;
-            PositionY = PositionY;
+            PositionX = positionX;
+            PositionY = positionY;
             HP = hP;
         }
 
@@ -50,7 +50,7 @@ namespace turnBasedGame.model.Creature
 
         public void ReceiveHit(int damage)
         {
-            int reducedDamage = Math.Max(0, damage - _defenseItems.Sum(item => item.DamageReduction));
+            int reducedDamage = Math.Max(0, damage - _defenseItems.Sum(item => item.Protection));
             HP -= reducedDamage;
         }
        

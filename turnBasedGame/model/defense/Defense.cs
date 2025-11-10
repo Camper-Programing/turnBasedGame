@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace turnBasedGame.model.Defence
+namespace turnBasedGame.model.Defense
 {
        public interface IDefenseItem
     {
