@@ -10,7 +10,7 @@ namespace turnBasedGame.model.Attack
     public class Sword : IAttackItem
     {
         public string Name => "Sword";
-        public int Damage => 15;
+        public int Damage => 25;
 
         string IAttackItem.Name { get => Name; set => throw new NotImplementedException(); }
     }
