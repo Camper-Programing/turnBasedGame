@@ -1,60 +1,60 @@
-﻿namespace turnBasedGame.model.Creature
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using turnBasedGame.model.Attack;
+using turnBasedGame.model.Defense;
+
+
+namespace turnBasedGame.model.Creature
 {
-    public interface ICreature
-    {
-        int positionX { get; }
-        int positionY { get; }
-        int HP { get; }
-        void moveTo(int x, int y);
-        void hit(Creature target, int damage);
-        void ReveiveHit(int damage);
-    }
+    
+
     public class Creature : ICreature
     {
-        private int v1;
-        private int v2;
+      /*This here is to create the base line for a creature, adding things like items, hp, movement*/
 
-        public int positionX { get; private set; }
-        public int positionY { get; private set; }
+        public int PositionX { get; private set; }
+        public int PositionY { get; private set; }
         public int HP { get; private set; }
 
-        public Creature(int PositionX, int PositionY, int hP)
+
+        private readonly List<IAttackItem> _attackItems = new();
+        private readonly List<IDefenseItem> _defenseItems = new();
+
+        
+        
+
+        public Creature(int positionX, int positionY, int hP)
         {
-            positionX = PositionX;
-            positionY = PositionY;
+            PositionX = positionX;
+            PositionY = positionY;
             HP = hP;
         }
 
-        public Creature(int v1, int v2)
-        {
-            this.v1 = v1;
-            this.v2 = v2;
-        }
+      
 
         public void MoveTo(int x, int y)
         {
-            positionX = x;
-            positionY = y;
+            PositionX = x;
+            PositionY = y;
         }
+        public void AddAttackItem(IAttackItem item) => _attackItems.Add(item);
+        public void AddDefenseItem(IDefenseItem item) => _defenseItems.Add(item);
 
 
-
-        public void ReveiveHit(int damage)
+        public void Hit(Creature target)
         {
-            HP -= damage;
-            if (HP <= 0)
-            {
-                //implément observer later
-            }
-        }
-        public void hit(Creature target, int damage)
-        {
-            target.ReveiveHit(damage);
+            int totalDamage = _attackItems.Sum(item => item.Damage);
+            target.ReceiveHit(totalDamage);
         }
 
-        public void moveTo(int x, int y)
+        public void ReceiveHit(int damage)
         {
-            throw new NotImplementedException();
+            int reducedDamage = Math.Max(0, damage - _defenseItems.Sum(item => item.Protection));
+            HP -= reducedDamage;
         }
+       
+
+       
     }
 }
