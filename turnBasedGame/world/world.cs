@@ -1,41 +1,67 @@
-﻿using turnBasedGame.model.Creature;
+﻿using System.Collections.Generic;
+using System.Linq;
+using turnBasedGame.model.Creature;
+using turnBasedGame.logger;
 
 namespace turnBasedGame.World
 {
-    internal class World
+    /// <summary>
+    /// Represents the world grid and manages creatures and world objects.
+    /// </summary>
+    public class World
     {
-        private readonly Ilogger logger;
-        public int maxX { get; set; }
-        public int maxY { get; set; }
+        /// <summary>
+        /// This is to log the events of the world
+        /// </summary>
+        /// <remarks> used internally for logging use.</remarks>
+        private readonly Ilogger _logger;
 
-        private readonly List<WorldObject> WorldObjects = new ();
-        private readonly List<Creature> Creature = new ();
+        /// <summary>
+        /// Initializes a new instance of the World class with specified dimensions.
+        /// </summary>
+        /// <param name="maxX">The maximum X-coordinate of the world.</param>
+        /// <param name="maxY">The maximum Y-coordinate of the world.</param>
+
+        public int MaxX { get; }
+        public int MaxY { get; }
+
+        private readonly List<WorldObject> _worldObjects = new();
+        private readonly List<Creature> _creatures = new();
 
         public World(int maxX, int maxY, Ilogger logger)
         {
-            this.maxX = maxX;
-            this.maxY = maxY;
-            this.logger = logger;
-            logger.Log($"World created with size {maxX}x{maxY}");
-
+            MaxX = maxX;
+            MaxY = maxY;
+            _logger = logger;
+            _logger.Log($"World created with size {MaxX}x{MaxY}");
         }
+
+        /// <summary>
+        /// adds a world object to the world
+        /// </summary>
+        /// <param name="obj"></param>
         public void AddWorldObject(WorldObject obj)
         {
-            WorldObjects.Add(obj);
-            logger.Log($"World object added at position ({obj.positionX}, {obj.positionY})");
+            _worldObjects.Add(obj);
+            _logger.Log($"World object added at position ({obj.positionX}, {obj.positionY})");
         }
-        public void AddCreature(Creature Creature)
+        /// <summary>
+        /// adds a creature to the world
+        /// </summary>
+        /// <param name="creature"></param>
+        public void AddCreature(Creature creature)
         {
-            this.Creature.Add(Creature);
-            logger.Log($"Creature added at position ({Creature.PositionX}, {Creature.PositionY})");
+            _creatures.Add(creature);
+            _logger.Log($"Creature added at position ({creature.PositionX}, {creature.PositionY})");
         }
-
-        public bool IsOccupied(int x, int y)
-        {
-            return Creature.Any(c => c.PositionX == x && c.PositionY == y) ||
-                   WorldObjects.Any(o => o.positionX == x && o.positionY == y);
-        }
-
-
+        /// <summary>
+        /// to check it a postion on the map/world is occupied
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public bool IsOccupied(int x, int y) =>
+            _creatures.Any(c => c.PositionX == x && c.PositionY == y) ||
+            _worldObjects.Any(o => o.positionX == x && o.positionY == y);
     }
 }
