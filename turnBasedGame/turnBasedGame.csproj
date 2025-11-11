@@ -5,6 +5,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Turn based game for assignment</Title>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>TurnBasedGameFramework</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
