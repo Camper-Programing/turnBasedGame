@@ -1,0 +1,7 @@
+﻿<GameConfig>
+	<World>
+		<MaxX>10</MaxX>
+		<MaxY>10</MaxY>
+	</World>
+	<Difficulty>Normal</Difficulty>
+</GameConfig>

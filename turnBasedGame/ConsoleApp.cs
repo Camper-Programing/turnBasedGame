@@ -16,13 +16,18 @@ namespace turnBasedGame //test class ´for the framework
 {
     internal class ConsoleApp
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //Test of logging
             MyLogger.Instance.addListener(new ConsoleTraceListener());
 
             //create world
-            var World = new World.World(10, 10, MyLogger.Instance);
+            /*var World = new World.World(10, 10, MyLogger.Instance); the old way when the game created a world*/
+
+            var (maxX, maxY, difficulty) = GameConfig.ConfigLoader.LoadConfig("GameConfig.xml");
+            MyLogger.Instance.Log($"Game configuration loaded: maxX={maxX}, maxY={maxY}, difficulty={difficulty}");
+
+            var World = new World.World(maxX, maxY, MyLogger.Instance); //new way where the world is created based on the config file
 
             //create Creature
             /*var Creature = new Creature(2, 3, 100);*/
