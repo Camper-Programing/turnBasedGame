@@ -12,15 +12,15 @@ namespace turnBasedGame.GameConfig
         public static (int maxX, int maxY, string difficulty) LoadConfig(string filePath)
         {
             /*if (!File.Exists(filePath))
-            
                 throw new FileNotFoundException($"Configuration file not found: {filePath}");//In case the XML file can't be found*/
             
+            int maxX = (int?)worldElement.Element("MaxX")
+                ?? throw new InvalidDataException("Missing <MaxX>.");
+            int maxY = (int?)worldElement.Element("MaxY")
+                ?? throw new InvalidDataException("Missing <MaxY>.");
+            string difficulty = (string?)doc.Root?.Element("Difficulty")
+                ?? "Normal";
 
-            var doc = XDocument.Load(filePath);
-            var worldElement = doc.Element("GameConfig").Element("World");
-            int maxX = int.Parse(worldElement.Element("MaxX").Value);
-            int maxY = int.Parse(worldElement.Element("MaxY").Value);
-            string difficulty = doc.Root.Element("Difficulty").Value;
             return (maxX, maxY, difficulty);
         }
     }
