@@ -33,40 +33,57 @@ namespace turnBasedGame //test class ´for the framework
 
             var World = new World.World(maxX, maxY, MyLogger.Instance); //new way where the world is created based on the config file
 
-            //create Creature
-            /*var Creature = new Creature(2, 3, 100);*/
-            //World.AddCreature(Creature);//
-
-            var hero = new Hero(1, 1, 150);
-            var enemy = new Enemy(5, 5, 80);
             
-            /*hero.AddAttackItem(new Sword());*/
 
-            hero.AddAttackItem(GameObjectFactory.CreateAttackItem("Sword"));
-            //Create Defense Items using factory.
-            enemy.AddDefenseItem(GameObjectFactory.CreateDefenseItem("Shield"));
-
-            var shield = new Shield();
-            var boostedSheild = new DefenseDecorator(shield, 5); //should add 10 points of damage protection
-            var compositeDefense = new DefenseComposite();
-            compositeDefense.Add(shield);
-            compositeDefense.Add(boostedSheild); //This is to test the decorator and composite pattern
 
             //Add Items to Creature
+            var hero = new Hero(1, 1, 150);
+            var enemy = new Enemy(2, 2, 80);
 
+            //Testing Observer Pattern
+            hero.AddObserver(new LoggerObserver());
+            enemy.AddObserver(new LoggerObserver());
+
+            /*hero.AddAttackItem(new Sword());*/
+
+            hero.AddAttackItem(GameObjectFactory.CreateAttackItem("Sword"));//Create Attack Item using factory with default damage that being 15
+
+
+            var sword1 = GameObjectFactory.CreateAttackItem("Sword", 28); //Create Attack Item using factory with custom damage
+            var sword2 = GameObjectFactory.CreateAttackItem("Sword", 19); //Create another Attack Item using factory with custom damage
+            var combinedSword = (Sword)sword1 + (Sword)sword2; //Use operator overloading to combine swords
+            hero.AddAttackItem(combinedSword); //Add combined sword to hero
+            //Create Defense Items using factory.
+
+            var swordEnemy = GameObjectFactory.CreateAttackItem("Sword", 20);
+            enemy.AddAttackItem(swordEnemy);
+
+
+
+            var boostedSheild = new DefenseDecorator(new Shield(), 5); //should add 5 points of damage protection, standard shield gives 10 points of protection
+            var compositeDefense = new DefenseComposite();
+            compositeDefense.Add(boostedSheild);
             enemy.AddDefenseItem(compositeDefense);
 
-            //Add Creature to World
-            World.AddCreature(hero);
-            World.AddCreature(enemy);
+             //This is to test the decorator and composite pattern
+
+             
+
+
+            hero.PerformAttack(enemy); //Test Attack Hero to Enemy
+            enemy.PerformAttack(hero);  //Test Attack Enemy to Hero
 
             //Test Attack Hero to Enemy
-            hero.Hit(enemy);
+            /*hero.Hit(enemy);
             MyLogger.Instance.Log($"Enemy HP after hit: {enemy.HP}");
             Console.WriteLine($"Enemy HP after attack: {enemy.HP}");
 
+
             enemy.Hit(hero);
             MyLogger.Instance.Log($"Hero HP after hit: {hero.HP}");
+            Console.WriteLine($"Hero HP after attack: {hero.HP}");*/ 
+            
+            //this part here should not be needed after the oberserver pattern is implemented but leaving it for now to see the output in console
 
 
             //Move Creature
@@ -74,6 +91,7 @@ namespace turnBasedGame //test class ´for the framework
             /*hero.MoveTo(4, 5);
             MyLogger.Instance.Log($"Creature moved to ({hero.PositionX}, {hero.PositionY})"); /* The first test has been concluded, had to change a few things here and there in order for it to work, one was mainly naming problems with the program*/
             //Console.WriteLine("Press any key to exit...check the log for details.");*/
+            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
 
