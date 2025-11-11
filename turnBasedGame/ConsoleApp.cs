@@ -4,11 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using turnBasedGame.Config;
 using turnBasedGame.logger;
-using turnBasedGame.model.Creature;
-using turnBasedGame.World;
 using turnBasedGame.model.Attack;
+using turnBasedGame.model.Creature;
 using turnBasedGame.model.Defense;
+using turnBasedGame.World;
 
 
 
@@ -16,15 +17,16 @@ namespace turnBasedGame //test class ´for the framework
 {
     internal class ConsoleApp
     {
-        static void Main()
+        static void Main(string[] args)
         {
+            Console.WriteLine($"Current directory: {Environment.CurrentDirectory}"); //to help debug file path issues
             //Test of logging
             MyLogger.Instance.addListener(new ConsoleTraceListener());
 
             //create world
             /*var World = new World.World(10, 10, MyLogger.Instance); the old way when the game created a world*/
 
-            var (maxX, maxY, difficulty) = GameConfig.ConfigLoader.LoadConfig("GameConfig.xml");
+            var (maxX, maxY, difficulty) = ConfigLoader.LoadConfig("Config.xml");
             MyLogger.Instance.Log($"Game configuration loaded: maxX={maxX}, maxY={maxY}, difficulty={difficulty}");
 
             var World = new World.World(maxX, maxY, MyLogger.Instance); //new way where the world is created based on the config file

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <World>
+    <MaxX>10</MaxX>
+    <MaxY>10</MaxY>
+  </World>
+  <Difficulty>Normal</Difficulty>
+</Config>
