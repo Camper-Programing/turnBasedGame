@@ -9,6 +9,7 @@ using turnBasedGame.logger;
 using turnBasedGame.model.Attack;
 using turnBasedGame.model.Creature;
 using turnBasedGame.model.Defense;
+using turnBasedGame.Factory;
 using turnBasedGame.World;
 
 
@@ -26,7 +27,8 @@ namespace turnBasedGame //test class ´for the framework
             //create world
             /*var World = new World.World(10, 10, MyLogger.Instance); the old way when the game created a world*/
 
-            var (maxX, maxY, difficulty) = ConfigLoader.LoadConfig("Config.xml");
+            string configPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config.xml");
+            var (maxX, maxY, difficulty) = ConfigLoader.LoadConfig(configPath); //if it does not work use a hardcodeded path like @"C:\path\to\your\Config.xml"
             MyLogger.Instance.Log($"Game configuration loaded: maxX={maxX}, maxY={maxY}, difficulty={difficulty}");
 
             var World = new World.World(maxX, maxY, MyLogger.Instance); //new way where the world is created based on the config file
@@ -38,10 +40,14 @@ namespace turnBasedGame //test class ´for the framework
             var hero = new Hero(1, 1, 150);
             var enemy = new Enemy(5, 5, 80);
             
-            hero.AddAttackItem(new Sword());
+            /*hero.AddAttackItem(new Sword());*/
+
+            hero.AddAttackItem(GameObjectFactory.CreateAttackItem("Sword"));
+            //Create Defense Items using factory.
+            enemy.AddDefenseItem(GameObjectFactory.CreateDefenseItem("Shield"));
 
             var shield = new Shield();
-            var boostedSheild = new DefenseDecorator(shield, 0); //should add 10 points of damage protection
+            var boostedSheild = new DefenseDecorator(shield, 5); //should add 10 points of damage protection
             var compositeDefense = new DefenseComposite();
             compositeDefense.Add(shield);
             compositeDefense.Add(boostedSheild); //This is to test the decorator and composite pattern

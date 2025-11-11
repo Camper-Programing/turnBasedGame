@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace turnBasedGame.Factory
 {
-    internal class GameObjectFactory
+    using turnBasedGame.model.Attack;
+    using turnBasedGame.model.Defense;
+    public static class GameObjectFactory
     {
+        public static IAttackItem CreateAttackItem(string type)
+        {
+            return type switch
+            {
+                "Sword" => new Sword(),
+                _ => throw new ArgumentException($"Unknown attack item type: {type}"),
+            };
+        }
+        public static IDefenseItem CreateDefenseItem(string type)
+        {
+            return type switch
+            {
+                "Shield" => new Shield(),
+                _ => throw new ArgumentException($"Unknown defense item type: {type}"),
+            };
+        }
     }
 }

@@ -8,9 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="GameConfig\GameConfig.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="GameConfig\Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>Config.xml</TargetPath>
     </None>
+   
   </ItemGroup>
 
 </Project>
