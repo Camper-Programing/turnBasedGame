@@ -10,11 +10,11 @@ namespace turnBasedGame.Factory
     using turnBasedGame.model.Defense;
     public static class GameObjectFactory
     {
-        public static IAttackItem CreateAttackItem(string type)
+        public static IAttackItem CreateAttackItem(string type, int damage = 15)
         {
             return type switch
             {
-                "Sword" => new Sword(),
+                "Sword" => new Sword(damage),
                 _ => throw new ArgumentException($"Unknown attack item type: {type}"),
             };
         }

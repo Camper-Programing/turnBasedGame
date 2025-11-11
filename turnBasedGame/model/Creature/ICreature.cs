@@ -13,7 +13,9 @@ namespace turnBasedGame.model.Creature
         int PositionY { get; }
         int HP { get; }
         void MoveTo(int x, int y);
-        void Hit(Creature target);
+       
         void ReceiveHit(int damage);
+
+        void PerformAttack(Creature target);
     }
 }
