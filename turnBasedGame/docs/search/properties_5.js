@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['positionx_0',['PositionX',['../classturn_based_game_1_1model_1_1_creature_1_1_creature.html#ac3e82893e02d93d7904c0ef215b7313b',1,'turnBasedGame.model.Creature.Creature.PositionX'],['../interfaceturn_based_game_1_1model_1_1_creature_1_1_i_creature.html#ab64818e3f514e736fffd81d2353a07c8',1,'turnBasedGame.model.Creature.ICreature.PositionX']]],
+  ['positionx_1',['positionX',['../classturn_based_game_1_1_world_1_1_world_object.html#ae7da6f62a5eac6813eca35e7a37fd8d5',1,'turnBasedGame::World::WorldObject']]],
+  ['positiony_2',['PositionY',['../classturn_based_game_1_1model_1_1_creature_1_1_creature.html#a2740b3323c6420c8fcc73fb50db38f0a',1,'turnBasedGame.model.Creature.Creature.PositionY'],['../interfaceturn_based_game_1_1model_1_1_creature_1_1_i_creature.html#a82cdca7ca0066d23f3961b7384b42125',1,'turnBasedGame.model.Creature.ICreature.PositionY']]],
+  ['positiony_3',['positionY',['../classturn_based_game_1_1_world_1_1_world_object.html#aaf424cade4c38c1f4f6b4f1fd792b89f',1,'turnBasedGame::World::WorldObject']]],
+  ['protection_4',['Protection',['../interfaceturn_based_game_1_1model_1_1_defense_1_1_i_defense_item.html#a3df01f253700081dd7115704aaa777c4',1,'turnBasedGame.model.Defense.IDefenseItem.Protection'],['../classturn_based_game_1_1model_1_1_defense_1_1_defense_composite.html#a40358178fff494ab4905ddf34a0a5352',1,'turnBasedGame.model.Defense.DefenseComposite.Protection'],['../classturn_based_game_1_1model_1_1_defense_1_1_defense_decorator.html#a471e8b979d52c56b88747ef794cc839a',1,'turnBasedGame.model.Defense.DefenseDecorator.Protection'],['../classturn_based_game_1_1model_1_1_defense_1_1_shield.html#aa9efc2ffd4c04671ef3cfe3cbee0a217',1,'turnBasedGame.model.Defense.Shield.Protection']]]
+];

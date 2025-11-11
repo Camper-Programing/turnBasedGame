@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['name_0',['Name',['../interfaceturn_based_game_1_1model_1_1_attack_1_1_i_attack_item.html#add7d17e76317c6697fc18484d14f3ab0',1,'turnBasedGame.model.Attack.IAttackItem.Name'],['../classturn_based_game_1_1model_1_1_attack_1_1_sword.html#a48b57a69c5425287d849864a691e3f5d',1,'turnBasedGame.model.Attack.Sword.Name'],['../interfaceturn_based_game_1_1model_1_1_defense_1_1_i_defense_item.html#a55e631d7b81888390feb3bdf661bbe74',1,'turnBasedGame.model.Defense.IDefenseItem.Name'],['../classturn_based_game_1_1model_1_1_defense_1_1_defense_composite.html#a88f307f06dd3f3c9a1f2ed21d4971abe',1,'turnBasedGame.model.Defense.DefenseComposite.Name'],['../classturn_based_game_1_1model_1_1_defense_1_1_defense_decorator.html#a8ff029d79d19be61a78758ce4033f4b9',1,'turnBasedGame.model.Defense.DefenseDecorator.Name'],['../classturn_based_game_1_1model_1_1_defense_1_1_shield.html#a5a1af449a64681520d45d74f4f167827',1,'turnBasedGame.model.Defense.Shield.Name']]]
+];
