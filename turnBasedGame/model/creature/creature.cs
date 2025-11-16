@@ -15,13 +15,14 @@ using turnBasedGame.model.Defense;
 
 namespace turnBasedGame.model.Creature
 {
-    
+
 
     public class Creature : ICreature
     {
         /*This here is to create the base line for a creature, adding things like items, hp, movement*/
 
-        
+        public bool IsAlive => HP > 0; // Property to check if the creature is alive
+
         public int PositionX { get; private set; }
         public int PositionY { get; private set; }
         public int HP { get; private set; }
@@ -74,10 +75,10 @@ namespace turnBasedGame.model.Creature
             int Damage = CalculateDamage();
             Damage = ApplySpecialBonus(Damage);
             target.ReceiveHit(Damage);
-            
+
         }
 
-       
+
 
         protected virtual int CalculateDamage() // Calculate total damage from attack items
         {
@@ -87,7 +88,7 @@ namespace turnBasedGame.model.Creature
         {
             return damage; // No bonus by default
         }
-        
+
         /// <summary>
         /// Recalculate damage including special bonuses
         /// Notifies observers about the attack
@@ -99,10 +100,16 @@ namespace turnBasedGame.model.Creature
         {
             int reducedDamage = Math.Max(0, damage - _defenseItems.Sum(item => item.Protection));
             HP -= reducedDamage;
-            
+
             foreach (var observer in _observers)
             {
                 observer.OnCreatureHit(this, reducedDamage);
+            }
+
+            if (HP <= 0)
+            {
+                HP = 0;
+                // Notify observers about creature death if needed
             }
         }
 
@@ -123,7 +130,23 @@ namespace turnBasedGame.model.Creature
             }
         }*/
 
+        public void Loot(object item)
+        {
+
+            switch (item)
+            {
+                case IAttackItem attackItem:
+                    AddAttackItem(attackItem);
+                    break;
+                case IDefenseItem defenseItem:
+                    AddDefenseItem(defenseItem);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid item type for looting.");
+            }
 
 
+
+        }
     }
 }
