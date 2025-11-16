@@ -1,2 +1,3 @@
 This fine contains a framework for a turn based game.
-It is for education purpose only
+It is for education purpose only.
+The Nuget:
