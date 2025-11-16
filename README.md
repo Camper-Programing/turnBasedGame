@@ -1,3 +1,4 @@
 This fine contains a framework for a turn based game.
 It is for education purpose only.
-The Nuget:
+
+For some reason some folders have been duplicated, if you clone it in VS it should fix itself
