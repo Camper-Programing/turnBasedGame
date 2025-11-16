@@ -38,11 +38,13 @@ namespace turnBasedGame //test class ´for the framework
 
             //Add Items to Creature
             var hero = new Hero(1, 1, 150);
-            var enemy = new Enemy(2, 2, 80);
+            var enemy = new Enemy(2, 2, 100);
+            var boss = new Enemy(3, 3, 300); //just to show that we can create a boss enemy with higher hp and different position
 
             //Testing Observer Pattern
             hero.AddObserver(new LoggerObserver());
             enemy.AddObserver(new LoggerObserver());
+            boss.AddObserver(new LoggerObserver());
 
             /*hero.AddAttackItem(new Sword());*/
 
@@ -57,10 +59,10 @@ namespace turnBasedGame //test class ´for the framework
 
             var swordEnemy = GameObjectFactory.CreateAttackItem("Sword", 20);
             enemy.AddAttackItem(swordEnemy);
+          
 
 
-
-            var boostedSheild = new DefenseDecorator(new Shield(), 5); //should add 5 points of damage protection, standard shield gives 10 points of protection
+            var boostedSheild = new DefenseDecorator(new Shield(), 0); //should add 5 points of damage protection, standard shield gives 10 points of protection
             var compositeDefense = new DefenseComposite();
             compositeDefense.Add(boostedSheild);
             enemy.AddDefenseItem(compositeDefense);
@@ -73,6 +75,27 @@ namespace turnBasedGame //test class ´for the framework
             hero.PerformAttack(enemy); //Test Attack Hero to Enemy
             enemy.PerformAttack(hero);  //Test Attack Enemy to Hero
 
+
+            Console.WriteLine($"It Hero Dead: {hero.HP}");
+            Console.WriteLine($"Is Enemy Alive?: {enemy.IsAlive}");
+            //test of loot
+            var lootShield = new Shield();
+            enemy.Loot(lootShield); //Enemy drops a shield as loot for the hero
+
+            var lootSword = GameObjectFactory.CreateAttackItem("Sword", 25); //Create a sword as loot for the hero
+            hero.Loot(lootSword);
+
+            
+
+
+
+
+
+            Console.WriteLine($"Boss HP: {boss.HP}");
+            boss.PerformAttack(hero); //Test Attack Boss to Hero
+            hero.PerformAttack(boss); //Test Attack Hero to Boss
+
+
             //Test Attack Hero to Enemy
             /*hero.Hit(enemy);
             MyLogger.Instance.Log($"Enemy HP after hit: {enemy.HP}");
@@ -81,8 +104,8 @@ namespace turnBasedGame //test class ´for the framework
 
             enemy.Hit(hero);
             MyLogger.Instance.Log($"Hero HP after hit: {hero.HP}");
-            Console.WriteLine($"Hero HP after attack: {hero.HP}");*/ 
-            
+            Console.WriteLine($"Hero HP after attack: {hero.HP}");*/
+
             //this part here should not be needed after the oberserver pattern is implemented but leaving it for now to see the output in console
 
 
